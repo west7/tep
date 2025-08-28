@@ -1,0 +1,9 @@
+# bin files
+.elf
+.exe
+main
+
+# meta
+.vscode/
+rust-project.json
+target/
