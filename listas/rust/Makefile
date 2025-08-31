@@ -24,7 +24,14 @@ run:
 		echo "Não foi possível localizar Cargo.toml para '$$path'"; exit 1; \
 	fi; \
 	package=$$(basename "$$dir"); \
-	cargo run --quiet -p $$package --bin $$bin
+	start=$$(date +%s%N); \
+	cargo run --quiet -p $$package --bin $$bin; \
+	status=$$?; \
+	end=$$(date +%s%N); \
+	elapsed_ns=$$((end - start)); \
+	elapsed_ms=$$((elapsed_ns / 1000000)); \
+	printf "⏱️  Tempo de execução: %d.%03ds\n" $$((elapsed_ms/1000)) $$((elapsed_ms%1000)); \
+	exit $$status
 
 list:
 	@find $(LISTAS_DIR) -type f -name "*.rs" -printf "%f\n" | sed 's/\.rs$$//' | sort
