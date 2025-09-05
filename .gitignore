@@ -7,3 +7,4 @@ main
 .vscode/
 rust-project.json
 target/
+input/
