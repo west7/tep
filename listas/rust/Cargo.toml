@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "lista_01",
+    "lista_01", "lista_03",
 ]
 
 resolver = "3"
